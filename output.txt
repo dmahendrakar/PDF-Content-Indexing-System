@@ -1,0 +1,95 @@
+SEARCH RESULTS-
+Search Question: spirit of pseudocode
+Search Parameter: Paragraph
+
+--> In section: 1.3 Inventing an Algorithm
+at times.) You could imagine how similar routines can be written to test string equality
+that not only ignore case, but also ignore accents.
+Already you might be getting the spirit of the pseudocode in this book. The pseudocode
+language is not meant to be a real programming language: it abstracts away details that
+you would have to contend with in any language. For example, the language doesn't assume
+generic types or dynamic versus static types: the idea is that it should be clear what is
+intended and it should not be too hard to convert it to your native language. (However, in
+doing so, you might have to make some design decisions that limit the implementation to
+one particular type or form of data.)
+There was nothing special about the techniques we used so far to solve these simple string
+problems: such techniques are perhaps already in your toolbox, and you may have found
+better or more elegant ways of expressing the solutions in your programming language of
+choice. In this book, we explore general algorithmic techniques to expand your toolbox
+even further. Taking a naive algorithm and making it more efficient might not come so
+immediately, but after understanding the material in this book you should be able to
+methodically apply different solutions, and, most importantly, you will be able to ask
+yourself more questions about your programs. Asking questions can be just as important as
+answering questions, because asking the right question can help you reformulate the problem
+and think outside of the box.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+--> In section: 1.1 Prerequisites
+To understand the material presented in this book you need to know a programming language
+well enough to translate the pseudocode in this book into a working solution. You also need
+to know the basics about the following data structures: arrays, stacks, queues, linked-lists,
+trees, heaps (also called priority queues), disjoint sets, and graphs.
+Additionally, you should know some basic algorithms like binary search, a sorting algorithm
+(merge sort, heap sort, insertion sort, or others), and breadth-ﬁrst or depth-ﬁrst search.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+--> In section: 3.7 Towers Of Hanoi Problem
+Pseudocode
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+--> In section: 4.5 Skip Lists
+referenced as the header of the skip list, and must be as high as the highest node in the skip
+list , because an element at a given index(height) only point to another element at the same
+index in another node, and hence is only reachable if the header node has the given level
+(height).
+In order to get a height of a certain level n, a loop is iterated n times where a random
+function has successful generated a value below a certain threshold on n iterations. So for
+an even chance threshold of 0.5, and a random function generating 0 to 1.0, to achieve a
+height of 4, it would be 0.5 ˆ 4 total probability or (1/2)ˆ4 = 1/16. Therefore, high nodes
+are much less common than short nodes , which have a probability of 0.5 of the threshold
+succeeding the ﬁrst time.
+Insertion of a newly generated node of a randomized height, begins with a search at the
+highest level of the skip list's node, or the highest level of the inserting node, whichever is
+smaller. Once the position is found, if the node has an overall height greater than the skip
+list header, the skip list header is increased to the height of the excess levels, and all the
+new level elements of the header node are made to point to the inserting node ( with the
+usual rule of pointing only to elements of the same level).
+Beginning with header node of the skip list ,a search is made as in an ordered linked list
+for where to insert the node. The idea is to ﬁnd the last node which has a key smaller
+than insertion key by ﬁnding a next node's key greater than the inserting key; and this last
+smaller node will be the previous node in a linked list insertion. However, the previous node
+is different at different levels, and so an array must be used to hold the previous node at
+each level. When the smallest previous node is found, search is recommenced at the next
+level lower, and this continues until the lowest level . Once the previous node is known for
+all levels of the inserting node, the inserting node's next pointer at each level must be made
+to point to the next pointer of the node in the saved array at the same level . Then all the
+nodes in the array must have their next pointer point to the newly inserted node. Although
+it is claimed to be easier to implement, there is two simultaneous ideas going on, and the
+locality of change is greater than say just recursively rotating tree nodes, so it is probably
+easier to implement, if the original paper by Pugh is printed out and in front of you, and
+you copy the skeleton of the spelled out algorithm as pseudocode from the paper down into
+comments, and then implement the comments. It is still basically singly linked list insertion,
+with a handle to the node just before , whose next pointer must be copied as the inserted
+node's next pointer, before the next pointer is updated as the inserted node; but there are
+other tricky things to remember, such as having two nested loops, a temporary array of
+previous node references to remember which node is the previous node at which level ; not
+inserting a node if the key already exists and is found, making sure the list header doesn't
+need to be updated because the height of the inserting node is the greatest encountered so
+far, and making multiple linked list insertion by iterating through the temporary array of
+previous pointers.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+--> In section: 7.2 Dijkstra's Shortest Path Algorithm
+With two (high-level, pseudocode) transformations, Dijsktra's algorithm can be derived from
+the much less efficient backtracking algorithm. The trick here is to prove the transformations
+maintain correctness, but that's the whole insight into Dijkstra's algorithm anyway. [TODO:
+important to note the paradox that to solve this problem it's easier to solve a more-general
+version. That is, shortest path from s to all nodes, not just to t. Worthy of its own colored
+box.]
+
+-------------------------------------------------------------------------------------------------------------------------------
+

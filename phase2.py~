@@ -1,0 +1,7 @@
+from collections import Counter
+
+with open('Algorithms.txt','r') as f:
+	s=f.read()
+
+c=s.split('\n\n')
+print c

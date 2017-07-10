@@ -1,0 +1,43 @@
+from pdfminer.pdfparser import PDFParser
+from pdfminer.pdfdocument import PDFDocument
+
+# Open a PDF document.
+fp = open('Algorithms.pdf', 'rb')
+parser = PDFParser(fp)
+document = PDFDocument(parser, "secret")
+
+with open('Algorithms.txt','rb') as f:
+	book=f.read()
+	
+found=0
+skip=0
+paras = book.split('\n\n')
+print len(paras)
+print
+for i in paras:
+	if '1 Introduction' in i: skip+=1
+	if '1 Introduction' in i and skip==2: break
+	else: found+=1
+
+#delete initial content. start from first chapter
+paras=paras[found:len(paras)]
+print paras[0]
+
+
+# Get the outlines of the document.
+chapters={}
+sections={}
+i=j=0
+outlines = document.get_outlines()
+for (level,title,dest,a,se) in outlines:
+	print title
+    if level==1:
+    	s=title[title.index(' ')+1:len(title)]
+    	i+=1
+    	chapters[i]=s
+    else:
+    	s=title[title.index(' ')+1:len(title)]
+    	j+=1
+    	sections[j]=s
+    	
+print i,j
